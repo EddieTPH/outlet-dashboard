@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Outlet performance</title>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div>
+        <h1>Outlet performance</h1>
+        <div class="sub" id="range"></div>
+      </div>
+      <div class="filters" id="filters"></div>
+    </header>
+
+    <div class="banner" id="banner" hidden></div>
+
+    <section class="kpis">
+      <div class="card kpi"><div class="label">Total sales</div><div class="value" id="k-sales">–</div></div>
+      <div class="card kpi"><div class="label">% of target</div><div class="value accent" id="k-pct">–</div></div>
+      <div class="card kpi"><div class="label">Orders</div><div class="value" id="k-orders">–</div></div>
+      <div class="card kpi"><div class="label">Returns %</div><div class="value" id="k-ret">–</div></div>
+    </section>
+
+    <section class="grid">
+      <div class="card">
+        <h2>Sales vs target</h2>
+        <div class="hint">Each bar is one outlet-week. Red = below 90% of target.</div>
+        <div class="chart" id="chart"></div>
+        <div class="labels" id="labels"></div>
+      </div>
+      <div class="card">
+        <h2>Needs attention</h2>
+        <div class="hint">Outlet-weeks under 90% of target</div>
+        <ul id="attn"></ul>
+      </div>
+    </section>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
