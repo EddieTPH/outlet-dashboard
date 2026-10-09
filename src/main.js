@@ -6,13 +6,15 @@ const THRESHOLD = 0.9;
 /* ---------- Data loading: the ONLY place that knows where data comes from ----------
    Resolves to an array of { outlet, week, sales, target, orders, returns }.
    Reads the outlet_weeks table in Supabase over its REST API (no library needed).
-   Config comes from Vite env variables (set them in .env locally and in Vercel):
+   Config comes from Vite env variables when set (.env locally, Project Settings in Vercel):
      VITE_SUPABASE_URL, VITE_SUPABASE_KEY (the publishable / anon key).
-   The publishable key is safe in the browser ONLY because the table has row-level
-   security with a read-only (select) policy.
+   If they are not set at build time, the public defaults below are used, so the app
+   still works. The publishable key is safe in the browser ONLY because the table has
+   row-level security with a read-only (select) policy. Never put a secret or
+   service_role key here.
 ------------------------------------------------------------------------------- */
-const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
-const SUPABASE_KEY = import.meta.env.VITE_SUPABASE_KEY;
+const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL || "https://nwectffcubdxewovfjpn.supabase.co";
+const SUPABASE_KEY = import.meta.env.VITE_SUPABASE_KEY || "sb_publishable_XfbFemOK5LwrmbmRsTzVHQ_BPYk5Tj1";
 
 async function loadData() {
   if (!SUPABASE_URL || !SUPABASE_KEY) {
